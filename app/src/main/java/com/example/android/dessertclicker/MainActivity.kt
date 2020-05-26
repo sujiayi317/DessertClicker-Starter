@@ -18,7 +18,6 @@ package com.example.android.dessertclicker
 
 import android.content.ActivityNotFoundException
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -26,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
 import com.example.android.dessertclicker.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,16 +62,47 @@ class MainActivity : AppCompatActivity() {
     )
 
     override fun onStart() {
+        // to start the app and make it visible on the screen.
         super.onStart()
 
-        Log.i("MainActivity", "onStart Called")
+        Timber.i("onStart Called")
+    }
+
+    /*onResume() is called when the activity has focus*/
+    override fun onResume() {
+        // to give the activity focus and make it ready for the user to interact with it.
+        super.onResume()
+        Timber.i("onResume Called")
+    }
+
+    /*onPause() is called when the activity loses focus*/
+    override fun onPause() {
+        // When onPause() is called, the app no longer has focus
+        super.onPause()
+        Timber.i("onPause Called")
+    }
+
+    override fun onStop() {
+        // After onStop(), the app is no longer visible on screen
+        super.onStop()
+        Timber.i("onStop Called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.i("onDestroy Called")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Timber.i("onRestart Called")
     }
 
     private var currentDessert = allDesserts[0]
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("MainActivity", "onCreate Called")
+        Timber.i("onCreate Called")
 
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
