@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         // to start the app and make it visible on the screen.
         super.onStart()
-        dessertTimer.startTimer()
+//        dessertTimer.startTimer()
 
         Timber.i("onStart Called")
     }
@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         // After onStop(), the app is no longer visible on screen
         super.onStop()
-        dessertTimer.stopTimer()
+//        dessertTimer.stopTimer()
 
         Timber.i("onStop Called")
     }
@@ -116,7 +116,7 @@ class MainActivity : AppCompatActivity() {
             onDessertClicked()
         }
 
-        dessertTimer = DessertTimer()
+        dessertTimer = DessertTimer(this.lifecycle)
 
         // Set the TextViews to the right values
         binding.revenue = revenue
